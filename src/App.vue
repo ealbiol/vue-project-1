@@ -1,20 +1,13 @@
 <!--Root Component-->
 <template>
-  <ul>
-    <!--Passing props to RescourceItem : :resource="resource"-->
-    <ResourceItem
-      :resource="resource"
-      v-for="resource in storedResources"
-      :key="resource.id"
-    />
-  </ul>
+    <!--Passing/Sending props storedResources to component StoredResources.vue-->
+    <StoredResources :storedResources="storedResources"/>
 </template>
 <script>
-import ResourceItem from './components/resources/ResourceItem.vue';
-
+import StoredResources from './components/resources/StoredResources.vue';
 export default {
   components: {
-    ResourceItem,
+    StoredResources
   },
   data() {
     return {
