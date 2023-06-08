@@ -1,28 +1,23 @@
 <template>
-  <BaseCard>
+  <!--Wrapper Slot BaseCard-->
+  <base-card>
     <li>
-      <div>
-        <header>
-          <h3>{{ resource.title }}</h3>
-          <button>Delete</button>
-        </header>
-      </div>
+      <header>
+        <h3>{{ resource.title }}</h3>
+        <button>Delete</button>
+      </header>
       <p>{{ resource.description }}</p>
       <nav>
         <a :href="resource.link" target="_blank">View Resource</a>
       </nav>
     </li>
-  </BaseCard>
+  </base-card>
 </template>
 
 <script>
-import BaseCard from '../UI/BaseCard.vue';
 export default {
   //Receiving props from StoredResources.vue
   props: ['resource'],
-  components: {
-    BaseCard,
-  },
 };
 </script>
 <style scoped>

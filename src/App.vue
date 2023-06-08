@@ -1,13 +1,17 @@
 <!--Root Component-->
 <template>
+    <!--Sending props title to TheHeader.vue-->
+    <TheHeader title="RememberMe"/>
     <!--Passing/Sending props storedResources to component StoredResources.vue-->
     <StoredResources :storedResources="storedResources"/>
 </template>
 <script>
 import StoredResources from './components/resources/StoredResources.vue';
+import TheHeader from './components/resources/layouts/TheHeader.vue';
 export default {
   components: {
-    StoredResources
+    StoredResources,
+    TheHeader,
   },
   data() {
     return {
