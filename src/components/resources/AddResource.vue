@@ -24,6 +24,17 @@
       </div>
     </form>
   </base-card>
+  <base-dialog v-if="errorDialog" title="The following inputs are empty:" @close="closeDialog">
+    <template v-slot:header>
+      <div>{{ title }}</div>
+      <ul>
+        <li v-for="(emptyField, index) in emptyFields" :key="index">
+          {{ emptyField }}
+        </li>
+      </ul>
+      <base-button @click="closeDialog">Close</base-button>
+    </template>
+  </base-dialog>
 </template>
 <script>
 export default {
@@ -32,6 +43,8 @@ export default {
       inputTitle: null,
       textareaDescription: null,
       inputLink: null,
+      errorDialog: false,
+      emptyFields: [],
     };
   },
   //Receiving by provide the function addResource
@@ -49,16 +62,48 @@ export default {
     },
   },
   methods: {
+    //trim doesn't allow empty spaces
+    // A function in which we check if each field is empty.
+    // If it's empty we push the title of the field into the array emptyFields.
+    //Then we store the properties of the array to the propert emptyFields and we do a v-for in error-alert.
+    getEmptyFields() {
+      const emptyFields = [];
+      if (this.inputTitle === null || this.inputTitle.trim() === '') {
+        emptyFields.push('Title');
+      }
+      if (
+        this.textareaDescription === null ||
+        this.textareaDescription.trim() === ''
+      ) {
+        emptyFields.push('Description');
+      }
+      if (this.inputLink === null || this.inputLink.trim() === '') {
+        emptyFields.push('Link');
+      }
+      return (this.emptyFields = emptyFields);
+    },
+
     // 1. Collecting the form input values.
     // 2. In TheResources.vue
     handleSubmit() {
       const inputTitle = this.inputTitle;
       const textareaDescription = this.textareaDescription;
       const inputLink = this.inputLink;
-      //3. Calling addResource function giving properties
-      this.addResource(inputTitle, textareaDescription, inputLink);
+
+      this.getEmptyFields();
+      //If emptyFields array is truthy then there are fields empty as there is content in the array.
+      if (this.emptyFields.length) {
+        this.errorDialog = true;
+      } else {
+        //3. Calling addResource function giving properties
+        this.addResource(inputTitle, textareaDescription, inputLink);
+      }
+
       //The rest of the logic is in TheResources.vue
     },
+    closeDialog(){
+      this.errorDialog = false
+    }
   },
 };
 </script>
