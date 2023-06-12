@@ -3,11 +3,12 @@
     <form>
       <div class="form-control">
         <label for="title">Title</label>
-        <input id="title" name="title" type="text" />
+        <input v-model="inputTitle" id="title" name="title" type="text" />
       </div>
       <div class="form-control">
         <label for="description">Description</label>
         <textarea
+          v-model="textareaDescription"
           name="description"
           id="description"
           cols="30"
@@ -16,7 +17,7 @@
       </div>
       <div class="form-control">
         <label for="link">Link</label>
-        <input id="link" name="link" type="url" />
+        <input v-model="inputLink" id="link" name="link" type="url" />
       </div>
       <div>
         <base-button type="submit">Add Resource</base-button>
@@ -24,7 +25,29 @@
     </form>
   </base-card>
 </template>
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      inputTitle: null,
+      textareaDescription: null,
+      inputLink: null,
+    };
+  },
+  watch: {
+    // Best way to add console.log()'s:
+    inputTitle(newTitle) {
+      console.log('inputTitle:', newTitle);
+    },
+    textareaDescription(newDescription) {
+      console.log('textareaDescription:', newDescription);
+    },
+    inputLink(newLink) {
+      console.log('inputLink:', newLink);
+    },
+  },
+};
+</script>
 <style scoped>
 label {
   font-weight: bold;
