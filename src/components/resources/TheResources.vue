@@ -45,6 +45,7 @@ export default {
     };
   },
   //Passing/Providing props to any child or sibiling component.
+  // Child receives it by inject.
   provide() {
     return {
       storedResources: this.storedResources,

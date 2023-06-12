@@ -1,7 +1,7 @@
 <!--Styling Wrapper-->
 <template>
   <!--mode props received will be the style class name in CSS. For example l'ets say props mode value is 'redBox' and we have a class in style that is redBox and it adds a red border.-->
-  <button :type="type" class="mode">
+  <button :type="type" :class="mode">
     <!--In slot will be placed the text content of the button.-->
     <slot></slot>
   </button>
@@ -9,6 +9,8 @@
 <script>
 export default {
   //Receiving props from ResoucrceItem.vue
+  //type: type of button
+  //mode: css class
   props: ['type', 'mode'],
 };
 </script>

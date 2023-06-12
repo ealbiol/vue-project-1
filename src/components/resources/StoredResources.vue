@@ -1,5 +1,6 @@
 <template>
   <ul>
+    <!--Using storedResources received by inject.-->
     <!--Passing/Sending props storedResources to component ResourceItem.vue-->
     <ResourceItem
       :resource="resource"
