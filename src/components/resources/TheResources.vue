@@ -1,11 +1,17 @@
 <template>
   <base-card>
     <!--When click selectedTab property changes value to the string we passed.-->
-    <base-button @click="setSelectedTab('StoredResources')">
+    <base-button
+      @click="setSelectedTab('StoredResources')"
+      :mode="storedResButtonMode"
+    >
       Stored AddResources
     </base-button>
-    <base-button @click="setSelectedTab('AddResource')"
-      >Add Resource
+    <base-button
+      @click="setSelectedTab('AddResource')"
+      :mode="addResButtonMode"
+    >
+      Add Resource
     </base-button>
   </base-card>
   <component :is="selectedTab"></component>
@@ -52,6 +58,14 @@ export default {
     };
   },
   // selectedTab is equal to the string passed through click event.
+  computed: {
+    storedResButtonMode() {
+      return this.selectedTab === 'StoredResources' ? null : 'flat';
+    },
+    addResButtonMode() {
+      return this.selectedTab === 'AddResource' ? null : 'flat';
+    },
+  },
   methods: {
     setSelectedTab(tab) {
       this.selectedTab = tab;
