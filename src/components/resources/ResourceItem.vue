@@ -3,6 +3,9 @@
     <li>
       <header>
         <h3>{{ resource.title }}</h3>
+        <!--Executing the function that deletes the item based on its id-->
+        <!--The logic of deleteResource is in TheResources.vue-->
+        <!--We used provide/inject to pass the function deleteResource from TheResources.vue to ResourceItem.vue-->
         <base-button mode="flat" @click="deleteResource(resource.id)"> Delete </base-button>
       </header>
       <p>{{ resource.description }}</p>
