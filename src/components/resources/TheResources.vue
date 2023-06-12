@@ -75,9 +75,9 @@ export default {
     addResource(title, description, url) {
       const newResourceObj = {
         id: new Date().toDateString(), // Generating an id.
-        title: title, //title will be equal to what it receives.
-        description: description, //description will be equal to what it receives.
-        url: url, //url will be equal to what it receives.
+        title: title, //Second title is the data receive (what the user typed). title will be equal to what it receives.
+        description: description, //""
+        url: url, //""
       };
       // It then pushes it (unshift to have it on top of the list)
       this.storedResources.unshift(newResourceObj);

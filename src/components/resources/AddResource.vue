@@ -90,12 +90,11 @@ textarea:focus {
 }
 </style>
 
-
 <!--Add Resource Explanation
-- 1. AddResource.vue: In the function handleSubmit we save in const's the inputs from the form: title, description and link values that the user entered.
+- 1. AddResource.vue: In the function handleSubmit we save in const's the inputs from the form: title, description and link values that the user entered. handleSubmit added in preventDefault.
 - 2. TheResources.vue: We create the function addResource that in addResource.vue receives the data the user entered: title, description and link.
   In that function we:     
-    - Collect data in an object: newResourceObj
+    - Collect data in an object: newResourceObj. We create and object because storedResources is an array of objects.
     - We unshift (like push but to the top) this object to the storedResources.
     - We change the value of selectedTab to go back to StoredResources and see the new resource.
 - 3. AddResource.vue: We call the addResource function.
