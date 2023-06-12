@@ -1,10 +1,9 @@
 <template>
-  <!--Wrapper Slot BaseCard-->
   <base-card>
     <li>
       <header>
         <h3>{{ resource.title }}</h3>
-        <base-button mode="flat"> Delete </base-button>
+        <base-button mode="flat" @click="deleteResource(resource.id)"> Delete </base-button>
       </header>
       <p>{{ resource.description }}</p>
       <nav>
@@ -18,6 +17,8 @@
 export default {
   //Receiving props from StoredResources.vue
   props: ['resource'],
+  //Provided from TheResources.vue
+  inject:['deleteResource']
 };
 </script>
 <style scoped>

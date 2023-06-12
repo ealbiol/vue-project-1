@@ -58,6 +58,7 @@ export default {
     return {
       storedResources: this.storedResources,
       addResource: this.addResource,
+      deleteResource: this.deleteResource
     };
   },
   // selectedTab is equal to the string passed through click event.
@@ -86,6 +87,13 @@ export default {
       // We go again to StoredResources
       this.selectedTab = 'StoredResources';
       //Rest of the logic in AddResource.vue
+    },
+
+    deleteResource(id) {
+        //Getting the index in the array of the item we want to delete.
+        //Using a filter implies rewritting storedResources and vue will keep using the old storedResources. So you have to update the existing one.
+        const resIndex = this.storedResources.findIndex(res => res.id === id)
+        this.storedResources.splice(resIndex, 1)
     },
   },
 };
