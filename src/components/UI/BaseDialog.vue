@@ -1,18 +1,21 @@
 <template>
-  <div @click="$emit('close')"></div>
-  <dialog open>
-    <header>
-      <!--In case there is no data inside slot.-->
-      <h2>{{ title }}</h2>
-      <slot name="header"></slot>
-    </header>
-    <section>
-      <slot></slot>
-    </section>
-    <menu>
-      <slot name="actions"></slot>
-    </menu>
-  </dialog>
+  <!--Moving BaseDialog to the body html.-->
+  <teleport to="body">
+    <div @click="$emit('close')"></div>
+    <dialog open>
+      <header>
+        <!--In case there is no data inside slot.-->
+        <h2>{{ title }}</h2>
+        <slot name="header"></slot>
+      </header>
+      <section>
+        <slot></slot>
+      </section>
+      <menu>
+        <slot name="actions"></slot>
+      </menu>
+    </dialog>
+  </teleport>
 </template>
 <script>
 export default {
